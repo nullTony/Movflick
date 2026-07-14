@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+/* ═══════ ТОКЕНЫ ═══════ */
+@theme {
+  --color-*: initial;
+
+  /* поверхности */
+  --color-base: #131313;
+  --color-surface: #1D1D1D;
+  --color-card: #252525;
+  --color-footer: #0E0E0E;
+  --color-tabbar: #191919;
+  --color-hero: #0F140F;
+
+  /* акценты */
+  --color-primary: #2B7F36;
+  --color-primary-hover: #3FA04C;
+  --color-secondary: #6A8034;
+  --color-star: #FFC933;
+
+  /* текст */
+  --color-white: #FFFFFF;
+  --color-gray: #9E9E9E;
+  --color-muted: #595959;
+  --color-danger: #F87171;
+
+  /* шрифт */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* типографика: text-caption, text-label, text-body, text-heading, text-display */
+  --text-caption: 12px;
+  --text-caption--line-height: 1.4;
+  --text-label: 13.5px;
+  --text-label--line-height: 1.4;
+  --text-body: 15px;
+  --text-body--line-height: 1.65;
+  --text-heading: 22px;
+  --text-heading--line-height: 1.3;
+  --text-display: 74px;
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -2.5px;
+  --text-display--font-weight: 900;
+
+  /* радиусы: rounded-card, rounded-banner, rounded-poster, rounded-logo, rounded-input */
+  --radius-card: 14px;
+  --radius-banner: 16px;
+  --radius-poster: 18px;
+  --radius-logo: 9px;
+  --radius-input: 14px;
+
+  /* тени: shadow-poster, shadow-card-hover, shadow-fab */
+  --shadow-poster: 0 30px 60px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(255 255 255 / 0.08);
+  --shadow-card-hover: 0 14px 30px rgb(0 0 0 / 0.45);
+  --shadow-fab: 0 8px 20px rgb(0 0 0 / 0.4);
+
+  /* спейсинги: px-page, py-section, gap-grid, h-nav, h-tabbar, h-hero */
+  --spacing-page: 48px;
+  --spacing-section: 44px;
+  --spacing-grid: 24px;
+  --spacing-nav: 72px;
+  --spacing-tabbar: 78px;
+  --spacing-hero: 560px;
+}
+
+/* ═══════ БАЗА: умолчания без лишних классов ═══════ */
+@layer base {
+  body {
+    background-color: var(--color-base);
+    color: var(--color-white);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-weight: 700; }
+  button { cursor: pointer; }
+}
+
+/* ═══════ ГРАДИЕНТЫ: «одна команда» ═══════ */
+@utility gradient-brand {
+  background-image: linear-gradient(135deg, var(--color-secondary), var(--color-primary));
+}
+@utility gradient-banner {
+  background-image: linear-gradient(130deg, #2E6D35 0%, #173D1C 55%, #0F2412 100%);
+}
+@utility glow-hero {
+  background-image:
+    radial-gradient(640px 420px at 12% 18%, rgb(43 127 54 / 0.22), transparent 70%),
+    radial-gradient(560px 400px at 88% 72%, rgb(106 128 52 / 0.16), transparent 70%);
+}
+@utility fade-to-base {
+  background-image: linear-gradient(180deg, transparent, var(--color-base));
+}
+
+@utility scrollbar-hide {
+  scrollbar-width: none;           /* Firefox */
+  -ms-overflow-style: none;        /* старый Edge */
+  &::-webkit-scrollbar {
+    display: none;                 /* Chrome, Safari, новый Edge */
+  }
+}
