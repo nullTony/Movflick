@@ -22,6 +22,8 @@ const App = () => {
   const [errorMessage, setErrorMessage] = useState('')
   const [movieList, setMovieList] = useState([])
   const [genreList, setGenreList] = useState([])
+  const [trendList, setTrendList] = useState([])
+  const [popularList, setPopularList] = useState([])
 
 
   const fatchMovie = async () => {
@@ -47,6 +49,42 @@ const App = () => {
       setErrorMessage('Error fatching Movie, Pleace try again later.')
     }
   }
+  
+  const fatchTrend = async () => {
+    try {
+      const endpoint = `${API_BASE_TMDB}/trending/movie/day?language=en-US`
+      const response = await fetch(endpoint, API_OPTION)
+      const data = await response.json()
+
+
+      if (!response.ok) {
+        throw new Error('Failed to fatching trend movie')
+      }
+
+      setTrendList(data.results)
+    } catch (error) {
+      console.error(`Failed fatching trend ${error}`)
+      setErrorMessage('Error fatching Movie, Pleace try again later.')
+    }
+  }
+
+  const fatchPopular = async () => {
+    try {
+      const endpoint = `${API_BASE_TMDB}/movie/popular?language=en-US&page=2`
+      const response = await fetch(endpoint, API_OPTION)
+      const data = await response.json()
+
+
+      if (!response.ok) {
+        throw new Error('Failed to fatching popular movie')
+      }
+
+      setPopularList(data.results)
+    } catch (error) {
+      console.error(`Failed fatching popular ${error}`)
+      setErrorMessage('Error fatching Movie, Pleace try again later.')
+    }
+  }
 
   const fatchGenre = async () => {
     try {
@@ -68,6 +106,8 @@ const App = () => {
   useEffect( () => {
     fatchMovie()
     fatchGenre()
+    fatchTrend()
+    fatchPopular()
   }, [])
   return (
     <div className="wrapper">
@@ -81,10 +121,10 @@ const App = () => {
           <Hero movie={movieList} genreList={genreList} />
         </section>
         <section className='pb-3 pt-1'>
-          <Trend movieList={movieList} genreList={genreList} />
+          <Trend movieList={trendList} genreList={genreList} />
         </section>
         <section>
-          <Popular movieList={movieList} genreList={genreList}/>
+          <Popular movieList={popularList} genreList={genreList}/>
         </section>
       </main>
     </div>

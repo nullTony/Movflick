@@ -25,7 +25,7 @@ const Hero = ({movie, genreList}) => {
             <div className='w-full flex justify-between'>
                 <div className='flex flex-col gap-1'>
                     <h2 className='text-2xl font-extrabold'>{oneMovie.title}</h2>
-                    <p className='text-sm text-[#FFFFFFBF] font-medium'> {oneMovie.release_date?.split('-')[0]} · {movieGenre[0].name} / {movieGenre[1].name} · 2h 46m</p>
+                    <p className='text-sm text-[#FFFFFFBF] font-medium'> {oneMovie.release_date?.split('-')[0]} · {movieGenre[0]?.name} {movieGenre[1] && `/ ${movieGenre[1].name}`} · 2h 46m</p>
                 </div>
 
                 <button className='w-12 h-12 cursor-pointer rounded-3xl bg-primary flex justify-center items-center'>
