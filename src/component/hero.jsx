@@ -1,4 +1,6 @@
 import React from 'react'
+import star from '../assets/Movflick-selection.png'
+import playIcon from '../assets/Movflick-logo.png'
 
 const Hero = ({movie, genreList}) => {
     const oneMovie = movie?.[0]
@@ -16,7 +18,7 @@ const Hero = ({movie, genreList}) => {
     >
         <div className='flex w-full flex-col h-28 justify-between'>
             <span className='w-32 border border-[#FFFFFF47] px-3 py-1 rounded-3xl flex gap-2 items-center'>
-                <img className='w-4 h-4' src="./src/assets/Movflick-selection.png" alt="" />
+                <img className='w-4 h-4' src={star} alt="" />
                 <p className='text-sm font-semibold'>FEATURED</p>
             </span>
 
@@ -27,7 +29,7 @@ const Hero = ({movie, genreList}) => {
                 </div>
 
                 <button className='w-12 h-12 cursor-pointer rounded-3xl bg-primary flex justify-center items-center'>
-                    <img className='w-6 h-6' src="./src/assets/Movflick-play.png" alt="" />
+                    <img className='w-6 h-6' src={playIcon} alt="" />
                 </button>
             </div>
         </div>

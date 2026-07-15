@@ -2,29 +2,28 @@ import React from 'react'
 import star from '../assets/Movflick-selection.png'
 import playIcon from '../assets/Movflick-logo.png'
 
-const Trend = ({movieList, genreList}) => {
+const Popular = ({movieList, genreList}) => {
   return (
     <div className='flex flex-col gap-2'>
-        <div className='flex justify-between items-center'>
-            <h2 className='text-lg'>Trending Now</h2>
-            <a className='text-primary text-sm font-semibold' href="#">See all</a>
+        <div className='flex justify-between py-1 items-center'>
+            <h2 className='text-lg'>Popular Right Now</h2>
         </div>
-        <div className='flex flex-1 gap-2  overflow-x-auto scrollbar-hide'>
-             {movieList?.map( (movie) => {
 
+        <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3'>
+            {movieList?.map( (movie) => {
                 const genreName = genreList?.find(g => g.id === movie.genre_ids?.[0])?.name
                 const year = movie.release_date?.split('-')[0]
 
                 return (
                     <div 
                     key={movie.id}
-                    className='flex flex-col bg-tabbar rounded-xl h-60 w-40 shrink-0 overflow-hidden'>
+                    className='flex flex-col bg-tabbar rounded-xl overflow-hidden'>
                         <div 
-                        className='relative flex-1 bg-primary bg-center bg-cover'
+                        className='relative aspect-[5/6] bg-primary bg-center bg-cover'
                         style={{
                             backgroundImage: movie.poster_path
-                                ? `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
-                                : 'none'
+                            ? `url(https://image.tmdb.org/t/p/w500${movie.poster_path})`
+                            : 'none'
                         }}>
                             <div className='absolute inset-x-0 top-0 flex items-start justify-between px-2 py-2'>
                                 <span className='bg-base flex items-center gap-1 rounded-2xl py-0.5 px-2'>
@@ -43,10 +42,10 @@ const Trend = ({movieList, genreList}) => {
                         </div>
                     </div>
                 )
-             })}
+            })}
         </div>
     </div>
   )
 }
 
-export default Trend
+export default Popular

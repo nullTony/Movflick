@@ -1,4 +1,5 @@
 import React from 'react'
+import playIcon from '../assets/Movflick-logo.png'
 
 const Header = () => {
   return (
@@ -6,7 +7,7 @@ const Header = () => {
         <nav className='flex w-full justify-between'>
             <div className="flex gap-2">
                 <div className='w-7 h-7 rounded-lg bg-primary flex justify-center items-center'>
-                    <img className='w-4 h-4' src="./src/assets/Movflick-logo.png" alt="" />
+                    <img className='w-4 h-4' src={playIcon} alt="" />
                 </div>
                 <span className='text-white text-xl font-extrabold'>Mov<b className='text-primary lowercase'>Flick</b></span>
             </div>

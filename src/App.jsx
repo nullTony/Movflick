@@ -4,6 +4,7 @@ import Search from './component/search'
 import Genre from './component/genre'
 import Hero from './component/hero'
 import Trend from './component/rowTrend'
+import Popular from './component/popular'
 
 const API_BASE_TMDB = "https://api.themoviedb.org/3"
 const API_KEY = import.meta.env.VITE_TMDB_API
@@ -75,12 +76,15 @@ const App = () => {
       <Genre movieList={movieList} genreList={genreList}/>
 
       <main className='px-4 py-1 flex flex-col gap-3'>
+        {errorMessage && <p className='text-danger'>{errorMessage}</p>}
         <section className=''>
           <Hero movie={movieList} genreList={genreList} />
         </section>
-        <section className=''>
-          {errorMessage && <p className='text-danger'>{errorMessage}</p>}
+        <section className='pb-3 pt-1'>
           <Trend movieList={movieList} genreList={genreList} />
+        </section>
+        <section>
+          <Popular movieList={movieList} genreList={genreList}/>
         </section>
       </main>
     </div>
