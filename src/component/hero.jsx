@@ -8,7 +8,6 @@ const Hero = ({movie, genreList}) => {
 
     const id = oneMovie.genre_ids
     const movieGenre = genreList.filter(genre => id.includes(genre.id))
-    console.log(movieGenre)
   return (
     <div 
     className='w-full h-52 rounded-2xl gradient-banner px-4 py-4 flex flex-col justify-end bg-contain bg-center bg-no-repeat'

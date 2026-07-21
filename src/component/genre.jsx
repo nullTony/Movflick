@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Genre = ({movieList, genreList}) => {
+const Genre = ({movieList, genreList,selectedGenre, setSelectedGenre}) => {
     const genre = movieList.flatMap(movie => movie.genre_ids)
     const id = [...new Set(genre)]
 
@@ -11,9 +11,16 @@ const Genre = ({movieList, genreList}) => {
     
     <div className='px-4 py-4  overflow-x-auto scrollbar-hide'>
         <ul className='flex gap-3 items-center text-sm font-semibold'>
-            <span className='px-4 py-2 cursor-pointer text-sm rounded-3xl bg-primary'>All</span>
+            <li
+            onClick={() => setSelectedGenre(null)} className={`px-4 py-2 cursor-pointer rounded-3xl whitespace-nowrap ${
+            selectedGenre === null ? 'bg-primary' : 'bg-card'
+            }`}>All</li>
             {genreFilter.map(genre => (
-                <li key={genre.id} className=' cursor-pointer bg-card px-4 py-2 rounded-3xl whitespace-nowrap'>{genre.name}</li>
+                <li key={genre.id}
+                    onClick={() => setSelectedGenre(genre.id)} 
+                    className={`px-4 py-2 cursor-pointer rounded-3xl whitespace-nowrap ${
+                    selectedGenre === genre.id ? 'bg-primary' : 'bg-card'
+            }  `}>{genre.name}</li>
             ))}
         </ul>
     </div>
