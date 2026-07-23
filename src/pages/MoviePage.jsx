@@ -114,7 +114,7 @@ const MoviePage = () => {
         </span>
       </div>
 
-      <div className='px-5 -mt-10 z-10 flex flex-col gap-4'>
+      <div className='px-5 pt-3 z-10 flex flex-col gap-4'>
 
         <h1 className='text-3xl font-extrabold leading-tight'>{movie.title}</h1>
 
