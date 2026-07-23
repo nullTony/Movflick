@@ -1,7 +1,11 @@
 import { useState } from "react"
 import React from 'react'
+import { useLocation, Link } from 'react-router-dom'
 
 const TabBar = () => {
+
+    const location = useLocation() 
+
     const buttons = [
         {
             id: 1,
@@ -13,6 +17,7 @@ const TabBar = () => {
                 <polyline points="9 22 9 12 15 12 15 22" />
             </svg>
             ),
+            path: '/'
         },
         {
             id: 2,
@@ -24,6 +29,7 @@ const TabBar = () => {
                 <path d="m21 21-4.3-4.3" />
             </svg>
             ),
+            path: '/movie'
         },
         {
             id: 3,
@@ -34,6 +40,7 @@ const TabBar = () => {
                 <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
             </svg>
             ),
+            path: '/favorites'
         },
         {
             id: 4,
@@ -45,22 +52,26 @@ const TabBar = () => {
                 <path d="M20 21a8 8 0 0 0-16 0" />
             </svg>
             ),
+            path: '/profile'
         },
     ]
-    const [selectedBar, setSelectedBar] = useState(buttons[0].id)
     return (
         <div className='fixed w-full bottom-0 flex justify-between bg-tabbar px-2 py-1'>
 
             {buttons.map((btn) => {
+                const isActive = location.pathname === btn.path
                 return (
-                    <button
-                    key={btn.id}
-                    className={`w-20 py-2 flex items-center justify-center flex-col gap-1 cursor-pointer ${
-                        selectedBar === btn.id ? 'text-primary' : 'text-muted'
-                    }`}
-                    onClick={() => setSelectedBar(btn.id)}>
-                        {btn.svg}
-                        <p className='text-xs font-medium capitalize'>{btn.text}</p>
+                    <button>
+                        <Link
+                            key={btn.id}
+                            to={btn.path}
+                            className={`w-20 py-2 flex items-center justify-center flex-col gap-1 ${
+                            isActive ? 'text-primary' : 'text-muted'
+                            }`}
+                        >
+                            {btn.svg}
+                            <p className='text-xs font-medium capitalize'>{btn.text}</p>
+                        </Link>
                     </button>
                 )
             })}

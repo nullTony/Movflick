@@ -97,3 +97,14 @@
     display: none;                 /* Chrome, Safari, новый Edge */
   }
 }
+
+@utility bg-backdrop {
+  background: linear-gradient(140deg, #16241c 0%, #2a1a3c 55%, #0f1a12 100%);
+}
+
+@utility bg-backdrop-fade {
+  background: linear-gradient(180deg,
+    rgb(10 10 10 / 0.25) 0%,
+    rgb(10 10 10 / 0) 35%,
+    #0a0a0a 100%);
+}
